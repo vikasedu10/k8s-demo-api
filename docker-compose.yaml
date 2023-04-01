@@ -1,0 +1,55 @@
+version: '3.7'
+services:
+  app:                            # Golang API
+    build: .
+    ports:
+    - "9091:9091"
+    environment:
+    - TESTING_KEY=value123 
+  react:                          # React UI
+    build:
+      context: ../cac-platform
+      dockerfile: Dockerfile
+    ports:
+    - "8081:8081"  
+  keycloak:                       # Keycloak AUTH
+    image: jboss/keycloak
+    # Created admin user first time to create new admin user account
+    # environment:
+    #   KEYCLOAK_USER: admin
+    #   KEYCLOAK_PASSWORD: password
+    ports:
+    - "8080:8080"
+    volumes:
+    - keycloak_data:/opt/jboss/keycloak/standalone/data
+  db:                             # Postgres DB
+    image: postgres
+    volumes: 
+    - postgres_db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: 'vikas'
+    ports:
+    - "5432:5432"
+  pgadmin:                        # Postgres DB client
+    image: dpage/pgadmin4
+    ports:
+    - 5050:80
+    # Created admin user first time to create new admin user account
+    environment:
+      PGADMIN_DEFAULT_EMAIL: vikasedu10@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: vikasedu10
+    volumes:
+    - pgadmin_data:/var/lib/pgadmin
+    
+  # vault:
+  #   image: vault
+  #   ports:
+  #     - "8200:8200"
+  #   environment:
+  #     VAULT_DEV_ROOT_TOKEN_ID: "root_token"
+  #     VAULT_DEV_LISTEN_ADDRESS: "0.0.0.0:8200"
+  #   command: vault server -dev
+volumes:
+  postgres_db_data:
+  keycloak_data:
+  pgadmin_data:
