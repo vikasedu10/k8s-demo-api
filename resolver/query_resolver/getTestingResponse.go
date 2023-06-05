@@ -2,14 +2,17 @@ package query_resolver
 
 import (
 	"cac-platform-api/data/models/response"
-	"github.com/graphql-go/graphql"
+	"fmt"
 	"net/http"
+
+	"github.com/graphql-go/graphql"
 )
 
-func GetTestingResponse (param graphql.ResolveParams) (interface{}, error) {
-	return response.TestingResponse {
+func GetTestingResponse(param graphql.ResolveParams) (interface{}, error) {
+	fmt.Println("Testing GetTestingResponse function executed successfully!")
+	return response.TestingResponse{
 		Status_Code: http.StatusOK,
-		Message: "Connection to API is working.",
-		Data: "Status Executed.",
+		Message:     "Connection to API is working.",
+		Data:        "Status Executed.",
 	}, nil
 }

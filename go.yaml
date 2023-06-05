@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: graphql-api
+  name: cacplatformapi
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: graphql-api
+      app: cacplatformapi
   template:
     metadata:
       labels:
-        app: graphql-api
+        app: cacplatformapi
     spec:
       containers:
-        - name: graphql-api
+        - name: cacplatformapi
           image: 599355715474.dkr.ecr.us-east-1.amazonaws.com/demo-api:v1
           ports:
             - containerPort: 9091
@@ -22,16 +22,23 @@ spec:
               value: your-db-connection-url
             - name: PORT
               value: "9091"
+          resources:
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
       imagePullSecrets:
         - name: your-registry-secret-name
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: graphql-api-service
+  name: cacplatformapi
 spec:
   selector:
-    app: graphql-api
+    app: cacplatformapi
   ports:
     - name: http
       port: 9091
