@@ -56,10 +56,24 @@ spec:
     - host: a1123684039b04b808be426dac966ae3-1216601411.ap-south-1.elb.amazonaws.com # ELB DNS
       http:
         paths:
-          - pathType: Prefix
-            path: /goengine
-            backend:
-              service:
-                name: testapi
-                port:
-                  number: 9091
+        - backend:
+            service:
+              name: testapi
+              port:
+                number: 9091
+          path: /goengine(/|$)(.*)
+          pathType: ImplementationSpecific
+        - backend:
+            service:
+              name: testapi
+              port:
+                number: 9091
+          path: /home
+          pathType: Prefix
+        - backend:
+            service:
+              name: testapi
+              port:
+                number: 9091
+          path: /goengine
+          pathType: Prefix 
