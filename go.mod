@@ -1,4 +1,4 @@
-module cac-platform-api
+module platform-api
 
 go 1.19
 

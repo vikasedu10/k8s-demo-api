@@ -2,7 +2,7 @@ package mutation_resolver
 
 import (
 	"fmt"
-	"cac-platform-api/data/models/response"
+	"platform-api/data/models/response"
 	"net/http"
 	"github.com/graphql-go/graphql"
 )

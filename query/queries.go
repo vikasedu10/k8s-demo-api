@@ -1,8 +1,8 @@
 package query
 
 import (
-	"cac-platform-api/resolver/query_resolver"
-	"cac-platform-api/schema"
+	"platform-api/resolver/query_resolver"
+	"platform-api/schema"
 	"github.com/graphql-go/graphql"
 )
 

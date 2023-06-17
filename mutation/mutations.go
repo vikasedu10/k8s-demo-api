@@ -2,8 +2,8 @@ package mutation
 
 import (
 	"github.com/graphql-go/graphql"
-	"cac-platform-api/schema"
-	"cac-platform-api/resolver/mutation_resolver"
+	"platform-api/schema"
+	"platform-api/resolver/mutation_resolver"
 )
 
 var MutationType = graphql.NewObject(graphql.ObjectConfig{

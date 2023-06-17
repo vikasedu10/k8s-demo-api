@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cacplatformapi
+  name: testapi
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cacplatformapi
+      app: testapi
   template:
     metadata:
       labels:
-        app: cacplatformapi
+        app: testapi
     spec:
       containers:
-        - name: cacplatformapi
+        - name: testapi
           image: 599355715474.dkr.ecr.us-east-1.amazonaws.com/demo-api:v1
           ports:
             - containerPort: 9091
@@ -35,13 +35,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: cacplatformapi
+  name: testapi
 spec:
   selector:
-    app: cacplatformapi
+    app: testapi
   ports:
     - name: http
       port: 9091
       targetPort: 9091
-  type: LoadBalancer
+  # type: LoadBalancer
 

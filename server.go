@@ -2,18 +2,18 @@ package main
 
 import (
 	"fmt"
-	"cac-platform-api/config"
-	"cac-platform-api/mutation"
-	"cac-platform-api/query"
+	"platform-api/config"
+	"platform-api/mutation"
+	"platform-api/query"
 	"net/http"
 	"github.com/graphql-go/graphql"
 	"github.com/graphql-go/handler"
 	"github.com/joho/godotenv"
 
-	"cac-platform-api/data/services/cors_policy"
+	"platform-api/data/services/cors_policy"
 )
 
-var CACPlatformSchema, _ = graphql.NewSchema(
+var PlatformSchema, _ = graphql.NewSchema(
 	graphql.SchemaConfig{
 		Query: query.Query,
 		Mutation: mutation.MutationType,
@@ -38,7 +38,7 @@ func main () {
 			return
 		}
 		graphqlHttpHandler := handler.New(&handler.Config {
-		    Schema: &CACPlatformSchema,
+		    Schema: &PlatformSchema,
 			Pretty: true,
 			GraphiQL: true,
         })

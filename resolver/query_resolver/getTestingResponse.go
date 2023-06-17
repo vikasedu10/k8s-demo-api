@@ -1,7 +1,7 @@
 package query_resolver
 
 import (
-	"cac-platform-api/data/models/response"
+	"platform-api/data/models/response"
 	"fmt"
 	"net/http"
 

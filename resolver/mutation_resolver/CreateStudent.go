@@ -1,7 +1,7 @@
 package mutation_resolver
 
 import (
-	"cac-platform-api/data/connector/postgres_connector"
+	"platform-api/data/connector/postgres_connector"
 	"context"
 	"fmt"
 	"net/http"
