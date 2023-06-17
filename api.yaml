@@ -45,3 +45,21 @@ spec:
       targetPort: 9091
   # type: LoadBalancer
 
+---
+kind: Ingress
+metadata:
+  name: testapi
+  # namespace: default
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: a1123684039b04b808be426dac966ae3-1216601411.ap-south-1.elb.amazonaws.com # ELB DNS
+      http:
+        paths:
+          - pathType: Prefix
+            path: /goengine
+            backend:
+              service:
+                name: testapi
+                port:
+                  number: 9091
